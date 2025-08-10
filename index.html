@@ -9,19 +9,24 @@
             font-family: Arial, sans-serif;
             background-color: #ffebf0;
             text-align: center;
-            padding: 50px;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        h1 {
+        h1, h2 {
             color: #ff4d79;
+            font-size: 1.8em;
         }
         button {
-            padding: 15px 25px;
-            font-size: 18px;
+            padding: 12px 20px;
+            font-size: 1.2em;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             margin: 10px;
             transition: 0.3s;
+            width: 80%;
+            max-width: 250px;
         }
         #btnSim {
             background-color: #ff4d79;
@@ -45,7 +50,7 @@
 </head>
 <body>
     <h1>Duda, tenho uma pergunta muito importante...</h1>
-    <button onclick="mostrarPergunta()">Clica aqui 💌</button>
+    <button onclick="mostrarPergunta()">💌 Clica aqui 💌</button>
 
     <div id="pergunta" style="display:none;">
         <h2>Me dá um beijinho? 😏</h2>
@@ -62,12 +67,15 @@
 
         function fugir() {
             let btn = document.getElementById("btnNao");
-            btn.style.top = Math.random() * 200 - 100 + "px";
-            btn.style.left = Math.random() * 200 - 100 + "px";
+            let x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            let y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.position = "absolute";
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
         }
 
         function respostaSim() {
-            document.body.innerHTML = "<h1>deixa eu te fazer feliz <3 😘</h1>";
+            document.body.innerHTML = "<h1 style='color:#ff4d79;'>deixa eu te fazer feliz 😘</h1>";
             for (let i = 0; i < 30; i++) {
                 criarCoracao();
             }
